@@ -10,11 +10,20 @@ angular
     }
 
     function placeRandomMine(height, width, minefield) {
-      var row = Math.round(Math.random() * (height - 1));
-      var column = Math.round(Math.random() * (width - 1));
-      var spot = getSpot(minefield, row, column);
-      spot.content = "mine";
-      console.log("MINE placed at [ " + row + ", " + column + "]");
+      var minePlaced = false;
+      do {
+        var row = Math.round(Math.random() * (height - 1));
+        var column = Math.round(Math.random() * (width - 1));
+        var spot = getSpot(minefield, row, column);
+        if (spot.content != "mine") {
+          spot.content = "mine";
+          minePlaced = true;
+          console.log("MINE placed at [ " + row + ", " + column + "]");
+        }
+        else {
+          console.log("MINE already at [ " + row + ", " + column + "] Placing another");
+        }
+      } while (!minePlaced);
     }
 
     function placeNMines(n, height, width, minefield) {
