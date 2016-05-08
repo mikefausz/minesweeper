@@ -1,0 +1,19 @@
+ul {
+  list-style-type: none;
+  font-size: 0; }
+
+li {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 2px; }
+
+.covered {
+  height: 100%;
+  width: 100%;
+  background-color: blue; }
+
+.uncovered {
+  height: 100%;
+  width: 100%;
+  background-color: red; }

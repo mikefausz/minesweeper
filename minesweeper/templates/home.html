@@ -1,0 +1,8 @@
+<ul id="minefield">
+  <ul class="row"ng-repeat="row in minefield.rows">
+    <li class="spot" ng-repeat="spot in row.spots" ng-click="spot.isCovered = false">
+      <div class="covered" ng-if="spot.isCovered"></div>
+      <div class="uncovered" ng-if="!spot.isCovered"></div>
+    </li>
+  </ul>
+</ul>
