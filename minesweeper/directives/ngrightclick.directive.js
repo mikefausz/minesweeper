@@ -1,3 +1,4 @@
+// Got this directive from http://jsfiddle.net/bcaudan/vTZZ5/
 angular
   .module('minesweeper')
   .directive('ngRightClick', ngRightClick);
