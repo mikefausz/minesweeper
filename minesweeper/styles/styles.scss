@@ -1,23 +1,35 @@
 ul {
-  list-style-type: none;
   font-size: 0;
 }
 
 li {
   display: inline-block;
-  height: 20px;
-  width: 20px;
-  margin: 2px;
 }
 
 .covered {
   height: 100%;
   width: 100%;
+  text-align: center;
+  background-color: grey;
+}
+
+.empty {
+  height: 100%;
+  width: 100%;
+  text-align: center;
   background-color: blue;
 }
 
-.uncovered {
+.number {
   height: 100%;
   width: 100%;
+  text-align: center;
+  background-color: blue;
+}
+
+.mine {
+  height: 100%;
+  width: 100%;
+  text-align: center;
   background-color: red;
 }
