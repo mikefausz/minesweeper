@@ -17,30 +17,30 @@ li {
   display: inline-block;
 }
 
-.covered {
+
+// FOR (EVENTUALLY) IMPLEMENTING CUSTOM STYLES
+.spot {
   height: 100%;
   width: 100%;
   text-align: center;
+}
+
+.covered {
+  @extend .spot;
   background-color: grey;
 }
 
 .empty {
-  height: 100%;
-  width: 100%;
-  text-align: center;
+  @extend .spot;
   background-color: blue;
 }
 
 .number {
-  height: 100%;
-  width: 100%;
-  text-align: center;
+  @extend .spot;
   background-color: blue;
 }
 
 .mine {
-  height: 100%;
-  width: 100%;
-  text-align: center;
+  @extend .spot;
   background-color: red;
 }

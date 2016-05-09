@@ -1,31 +1,9 @@
 <div class="container">
   <h1>Minesweeper</h1>
   <ul id="minefield">
-    <ul class="row"ng-repeat="row in minefield.rows">
-      <li class="spot" ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)">
-        <img ng-if="spot.isCovered && !spot.isFlagged" src="minesweeper/images/covered.png">
-        <img ng-if="spot.isCovered && spot.isFlagged" src="minesweeper/images/flag-mine.png">
-        <img ng-if="!spot.isCovered && spot.content == 'empty'" src="minesweeper/images/empty.png">
-        <img ng-if="!spot.isCovered && spot.content == 'mine'" src="minesweeper/images/mine-wrong.png">
-        <img ng-if="!spot.isCovered && spot.content == 1" src="minesweeper/images/number-1.png">
-        <img ng-if="!spot.isCovered && spot.content == 2" src="minesweeper/images/number-2.png">
-        <img ng-if="!spot.isCovered && spot.content == 3" src="minesweeper/images/number-3.png">
-        <img ng-if="!spot.isCovered && spot.content == 4" src="minesweeper/images/number-4.png">
-        <img ng-if="!spot.isCovered && spot.content == 5" src="minesweeper/images/number-5.png">
-        <img ng-if="!spot.isCovered && spot.content == 6" src="minesweeper/images/number-6.png">
-        <img ng-if="!spot.isCovered && spot.content == 7" src="minesweeper/images/number-7.png">
-        <img ng-if="!spot.isCovered && spot.content == 8" src="minesweeper/images/number-8.png">
-        <!-- <div class="covered" ng-if="spot.isCovered"></div>
-        <div class="empty" ng-if="!spot.isCovered && spot.content == 'empty'"></div>
-        <div class="mine" ng-if="!spot.isCovered && spot.content == 'mine'">*</div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == 1"> <h2>1</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '2'"><h2>2</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '3'"><h2>3</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '4'"><h2>4</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '5'"><h2>5</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '6'"><h2>6</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '7'"><h2>7</h2></div>
-        <div class="number" ng-if="!spot.isCovered && spot.content == '8'"><h2>8</h2></div> -->
+    <ul ng-repeat="row in minefield.rows">
+      <li ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)">
+        <img ng-src="{{ getImg(spot) }}" alt="" />
       </li>
     </ul>
   </ul>
@@ -34,8 +12,7 @@
     <li><button type="button" name="intermediate" ng-click="newGame(16, 16, 40)">Intermediate</button></li>
     <li><button type="button" name="expert" ng-click="newGame(16, 30, 99)">Expert</button></li>
   </ul>
+  <h2>Mines left: {{ mines }}</h2>
   <h2 ng-if="isWinMessageVisible">You won!</h2>
   <h2 ng-if="isLostMessageVisible">You lost!</h2>
-  <h2>For display</h2>
-  <!-- <h2>You lost!</h2> -->
 </div>

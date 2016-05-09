@@ -13,26 +13,19 @@ ul {
 li {
   display: inline-block; }
 
-.covered {
+.spot, .covered, .empty, .number, .mine {
   height: 100%;
   width: 100%;
-  text-align: center;
+  text-align: center; }
+
+.covered {
   background-color: grey; }
 
 .empty {
-  height: 100%;
-  width: 100%;
-  text-align: center;
   background-color: blue; }
 
 .number {
-  height: 100%;
-  width: 100%;
-  text-align: center;
   background-color: blue; }
 
 .mine {
-  height: 100%;
-  width: 100%;
-  text-align: center;
   background-color: red; }
