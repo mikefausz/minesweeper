@@ -164,7 +164,6 @@ angular
     }
 
     $scope.uncoverSpot = function(spot) {
-      spot.isCovered = false;
       if(spot.content === "mine") {
         $scope.isLostMessageVisible = true;
       }
