@@ -47,7 +47,6 @@ angular
         // get the spot right above
         adjacentSpots.push(getSpot(minefield, row - 1, column));
 
-
         // check column to the right if this is not the last column
         if(column < width - 1) {
             // get the spot above and to the right
@@ -240,7 +239,7 @@ angular
     // TODO check adjacent spots if empty uncovered
     $scope.uncoverSpot = function(spot) {
       spot.isCovered = false;
-      
+
       if(spot.content == "mine") {
         $scope.isLostMessageVisible = true;
       }
