@@ -87,6 +87,7 @@ angular
     }
 
     function calculateNumber(minefield, row, column) {
+      console.log("ROW: " + row + ', ' + "COL" + column);
       var thisSpot = getSpot(minefield, row, column);
       var adjacentMines = 0;
       // if this spot contains a mine then we can't place a number here
@@ -107,9 +108,9 @@ angular
     }
 
     function calculateAllNumbers(minefield) {
-      for(var y = 0; y < $scope.height; y++) {
-        for(var x = 0; x < $scope.width; x++) {
-          calculateNumber(minefield, x, y);
+      for(var row = 0; row < $scope.height; row++) {
+        for(var column = 0; column < $scope.width; column++) {
+          calculateNumber(minefield, row, column);
         }
       }
     }
@@ -181,6 +182,14 @@ angular
 
     $scope.flagSpot = function(spot) {
       spot.isFlagged = spot.isFlagged ? false : true;
+    };
+
+    $scope.newGame = function(height, width, n) {
+      $scope.height = height;
+      $scope.width = width;
+      $scope.n = n;
+      $scope.minefield = createMinefield();
+      window.minefield = $scope.minefield;
     };
 
     $scope.minefield = createMinefield();
