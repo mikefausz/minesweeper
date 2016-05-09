@@ -52,22 +52,22 @@ angular
             // get the spot above and to the right
             adjacentSpots.push(getSpot(minefield, row - 1, column + 1));
         }
-    }
+      }
 
-    // check column to the left if this is not the first column
-    if(column > 0) {
+      // check column to the left if this is not the first column
+      if(column > 0) {
         // get the spot to the left
         adjacentSpots.push(getSpot(minefield, row, column - 1));
-    }
+      }
 
-    // check column to the right if this is not the last column
-    if(column < $scope.width - 1) {
+      // check column to the right if this is not the last column
+      if(column < $scope.width - 1) {
         // get the spot to the right
         adjacentSpots.push(getSpot(minefield, row, column + 1));
-    }
+      }
 
-    // check row below if this is not the last row
-    if(row < $scope.height - 1) {
+      // check row below if this is not the last row
+      if(row < $scope.height - 1) {
         // check column to the left if this is not the first column
         if(column > 0) {
             // get the spot below and to the left
@@ -82,95 +82,9 @@ angular
             // get the spot below and to the right
             adjacentSpots.push(getSpot(minefield, row + 1, column + 1));
         }
-    }
-    return adjacentSpots;
-}
-//     function calculateNumber(minefield, height, width, row, column) {
-//       var thisSpot = getSpot(minefield, row, column);
-//
-//       // if this spot contains a mine then we can't place a number here
-//       if(thisSpot.content == "mine") {
-//         return;
-//       }
-//
-//       var mineCount = 0;
-//
-//       // check row above if this is not the first row
-//       if(row > 0) {
-//         // check column to the left if this is not the first column
-//         if(column > 0) {
-//             // get the spot above and to the left
-//             var spot = getSpot(minefield, row - 1, column - 1);
-//             if(spot.content == "mine") {
-//                 mineCount++;
-//             }
-//         }
-//
-//         // get the spot right above
-//         var spot = getSpot(minefield, row - 1, column);
-//         if(spot.content == "mine") {
-//             mineCount++;
-//         }
-//
-//         // check column to the right if this is not the last column
-//         if(column < width - 1) {
-//             // get the spot above and to the right
-//             var spot = getSpot(minefield, row - 1, column + 1);
-//             if(spot.content == "mine") {
-//                 mineCount++;
-//             }
-//         }
-//     }
-//
-//     // check column to the left if this is not the first column
-//     if(column > 0) {
-//         // get the spot to the left
-//         var spot = getSpot(minefield, row, column - 1);
-//         if(spot.content == "mine") {
-//             mineCount++;
-//         }
-//     }
-//
-//     // check column to the right if this is not the last column
-//     if(column < width - 1) {
-//         // get the spot to the right
-//         var spot = getSpot(minefield, row, column + 1);
-//         if(spot.content == "mine") {
-//             mineCount++;
-//         }
-//     }
-//
-//     // check row below if this is not the last row
-//     if(row < height - 1) {
-//         // check column to the left if this is not the first column
-//         if(column > 0) {
-//             // get the spot below and to the left
-//             var spot = getSpot(minefield, row + 1, column - 1);
-//             if(spot.content == "mine") {
-//                 mineCount++;
-//             }
-//         }
-//
-//         // get the spot right below
-//         var spot = getSpot(minefield, row + 1, column);
-//         if(spot.content == "mine") {
-//             mineCount++;
-//         }
-//
-//         // check column to the right if this is not the last column
-//         if(column < width - 1) {
-//             // get the spot below and to the right
-//             var spot = getSpot(minefield, row + 1, column + 1);
-//             if(spot.content == "mine") {
-//                 mineCount++;
-//             }
-//         }
-//     }
-//
-//     if(mineCount > 0) {
-//         thisSpot.content = mineCount;
-//     }
-// }
+      }
+      return adjacentSpots;
+    }  
 
     function calculateNumber(minefield, row, column) {
       var thisSpot = getSpot(minefield, row, column);
