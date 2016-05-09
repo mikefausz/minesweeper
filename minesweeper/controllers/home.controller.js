@@ -163,6 +163,7 @@ angular
       return true;
     }
 
+    // TODO check adjacent spots if empty uncovered
     $scope.uncoverSpot = function(spot) {
       if(spot.content === "mine") {
         $scope.isLostMessageVisible = true;
