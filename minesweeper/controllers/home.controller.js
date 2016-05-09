@@ -84,7 +84,7 @@ angular
         }
       }
       return adjacentSpots;
-    }  
+    }
 
     function calculateNumber(minefield, row, column) {
       var thisSpot = getSpot(minefield, row, column);
@@ -153,12 +153,13 @@ angular
     }
 
     function uncoverSpots(spot) {
-      spot.isCovered = false;
-      if (spot.content != "empty") {
+      if (spot.content !== "empty") {
+        spot.isCovered = false;
         return;
       }
-      else {
-        var adjacentSpots = getAdjacentSpots(minefield, row, column);
+      if (spot.content === "empty" && spot.isCovered === true){
+        spot.isCovered = false;
+        var adjacentSpots = getAdjacentSpots(minefield, spot.row, spot.column);
         angular.forEach(adjacentSpots, function(spot) {
           uncoverSpots(spot);
         });
@@ -166,7 +167,7 @@ angular
     }
 
     $scope.uncoverSpot = function(spot) {
-      if(spot.content == "mine") {
+      if(spot.content === "mine") {
         spot.isCovered = false;
         $scope.isLostMessageVisible = true;
       }
