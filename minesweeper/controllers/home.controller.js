@@ -211,6 +211,49 @@ angular
       }
     };
 
+    // return spot image based on state
+    $scope.getClass = function(spot) {
+      if(spot.isCovered) {
+        switch (spot.flagState) {
+          case "flagged":
+            return (gameOver && spot.content != "mine") ? "minesweeper/images/flag-mine-wrong.png" : "minesweeper/images/flag-mine.png";
+          case "suspect":
+            return "minesweeper/images/flag-suspect.png";
+          default:
+            return "covered";
+        }
+      }
+      else {
+        switch (spot.content) {
+          case "mine":
+            if(spot.flagState === "flagged") {
+              return "minesweeper/images/flag-mine.png";
+            }
+            else {
+              return spot.mineWrong ? "minesweeper/images/mine-wrong.png" : "minesweeper/images/mine.png";
+            }
+          case 1:
+            return "number";
+          case 2:
+            return "number";
+          case 3:
+            return "number";
+          case 4:
+            return "number";
+          case 5:
+            return "number";
+          case 6:
+            return "number";
+          case 7:
+            return "number";
+          case 8:
+            return "number";
+          default:
+            return "empty";
+        }
+      }
+    };
+
     // recursively determine outcome of clicking on safe spot
     function uncoverSpots(spot) {
       // BASE CASE number clicked

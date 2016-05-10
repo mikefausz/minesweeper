@@ -3,7 +3,10 @@
   <ul id="minefield">
     <ul ng-repeat="row in minefield.rows">
       <li ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)">
-        <img ng-src="{{ getImg(spot) }}" alt="" />
+        <!-- <img ng-src="{{ getImg(spot) }}" alt="" /> -->
+        <div ng-class="getClass(spot)">
+          <!-- <span ng-if="spot.content != 'empty' && spot.content != 'mine'">{{ spot.content }}</span> -->
+        </div>
       </li>
     </ul>
   </ul>

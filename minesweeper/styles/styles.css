@@ -1,31 +1,41 @@
 body {
-  font-family: monospace; }
+  font-family: monospace;
+  box-sizing: border-box; }
 
 .container {
   width: 60%;
   text-align: center;
-  margin: auto; }
+  margin: auto;
+  background: lightgrey; }
 
 ul {
   font-size: 0;
   padding: 0; }
 
 li {
-  display: inline-block; }
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin: 4px; }
 
 .spot, .covered, .empty, .number, .mine {
   height: 100%;
-  width: 100%;
-  text-align: center; }
+  width: 100%; }
 
 .covered {
-  background-color: grey; }
+  border-radius: 100%;
+  background-color: darkgrey;
+  border: 2px solid;
+  border-color: gainsboro grey grey gainsboro; }
 
-.empty {
-  background-color: blue; }
+.empty, .number {
+  border-radius: 100%;
+  background-color: gainsboro;
+  border: 2px solid;
+  border-color: grey darkgrey darkgrey grey; }
 
 .number {
-  background-color: blue; }
+  color: blue; }
 
 .mine {
   background-color: red; }

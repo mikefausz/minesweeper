@@ -1,11 +1,13 @@
 body {
   font-family: monospace;
+  box-sizing: border-box;
 }
 
 .container {
   width: 60%;
   text-align: center;
   margin: auto;
+  background: lightgrey;
 }
 
 ul {
@@ -15,6 +17,9 @@ ul {
 
 li {
   display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin: 4px;
 }
 
 
@@ -22,22 +27,28 @@ li {
 .spot {
   height: 100%;
   width: 100%;
-  text-align: center;
+  // text-align: center;
 }
 
 .covered {
   @extend .spot;
-  background-color: grey;
+  border-radius: 100%;
+  background-color: darkgrey;
+  border: 2px solid;
+  border-color: gainsboro grey grey gainsboro;
 }
 
 .empty {
   @extend .spot;
-  background-color: blue;
+  border-radius: 100%;
+  background-color: gainsboro;
+  border: 2px solid;
+  border-color: grey darkgrey darkgrey grey;
 }
 
 .number {
-  @extend .spot;
-  background-color: blue;
+  @extend .empty;
+  color: blue;
 }
 
 .mine {
