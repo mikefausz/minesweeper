@@ -36,6 +36,9 @@ h1 {
   height: 30px;
   width: 30px;
   margin: 2px 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
   border-radius: 4px;
   font-size: 18px;
   font-weight: 600;
@@ -50,8 +53,9 @@ h1 {
 .covered {
   background-color: teal;
   color: transparent;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1); }
   .covered:hover {
     cursor: pointer;
@@ -67,8 +71,9 @@ h1 {
 .flag {
   background-color: teal;
   color: #9ac5c2;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1); }
   .flag i {
     font-size: 16px; }
@@ -79,8 +84,9 @@ h1 {
 
 .flag-wrong {
   background-color: #b01f1f;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1); }
   .flag-wrong i {
     font-size: 16px; }
@@ -88,8 +94,9 @@ h1 {
 .suspect {
   background-color: teal;
   color: #63aca4;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1); }
   .suspect i {
     font-size: 18px; }
@@ -105,8 +112,9 @@ h1 {
 
 .mine-wrong {
   background-color: #b01f1f;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1); }
   .mine-wrong i {
     font-size: 16px; }
@@ -125,8 +133,9 @@ button {
   width: 98px;
   height: 30px;
   border-radius: 4px;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
   font-size: 14px;
   font-family: "Raleway";
