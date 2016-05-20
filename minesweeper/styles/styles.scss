@@ -1,57 +1,193 @@
+$lt-green: rgb(154,197,194);
+$md-green: rgb(99,172,164);
+$md-dk-green: rgb(41,116,116);
+$dk-green: rgb(25,75,72);
+$red: rgb(176,31,31);
+
+html {
+  height: 100%;
+}
+
 body {
-  font-family: monospace;
+  font-family: "Raleway", "Helvetica", sans-serif;
   box-sizing: border-box;
-}
-
-.container {
-  width: 60%;
-  text-align: center;
-  margin: auto;
-  background: lightgrey;
-}
-
-ul {
-  font-size: 0;
+  height: 100%;
+  margin: 0;
   padding: 0;
 }
 
-li {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  margin: 4px;
+ul {
+  padding: 0;
 }
 
+.container {
+  height: 100%;
+  text-align: center;
+  background-image: url("https://c1.staticflickr.com/7/6183/6132449424_386eee552f_b.jpg");
+  background-size: cover;
+}
 
-// FOR (EVENTUALLY) IMPLEMENTING CUSTOM STYLES
+h1 {
+  margin: 0;
+  padding: 16px;
+
+  font-family: "Raleway";
+  font-size: 44px;
+  span {
+    font-weight: 100;
+    font-style: italic;
+  }
+}
+
+.col {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 2px;
+}
+
+.col li {
+  display: block;
+  height: 30px;
+  width: 30px;
+  margin: 2px 0;
+  border-radius: 4px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  // center spot content vertically
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .spot {
   height: 100%;
   width: 100%;
-  // text-align: center;
 }
 
 .covered {
-  @extend .spot;
-  border-radius: 100%;
-  background-color: darkgrey;
-  border: 2px solid;
-  border-color: gainsboro grey grey gainsboro;
+  background-color: teal;
+  color: transparent;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+
+  &:hover {
+    cursor: pointer;
+    background-color: $lt-green;
+  }
 }
 
 .empty {
-  @extend .spot;
-  border-radius: 100%;
-  background-color: gainsboro;
-  border: 2px solid;
-  border-color: grey darkgrey darkgrey grey;
+  background-color: transparent;
 }
 
 .number {
-  @extend .empty;
-  color: blue;
+  background-color: transparent;
+  color: black;
+}
+
+.flag {
+  background-color: teal;
+  color: $lt-green;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+  i {
+    font-size: 16px;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $lt-green;
+    color: $dk-green;
+  }
+}
+
+.flag-wrong {
+  background-color: $red;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+  i {
+    font-size: 16px;
+  }
+}
+
+.suspect {
+  background-color: teal;
+  color: $md-green;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+  i {
+    font-size: 18px;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $lt-green;
+    color: $dk-green;
+  }
 }
 
 .mine {
-  @extend .spot;
-  background-color: red;
+  background-color: transparent;
+  i {
+    font-size: 16px;
+  }
+}
+
+.mine-wrong {
+  background-color: $red;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+  i {
+    font-size: 16px;
+  }
+}
+
+.difficulty {
+  list-style: none;
+  margin: 10px;
+}
+
+.difficulty li {
+  display: inline-block;
+}
+
+button {
+  border: none;
+  background-color: teal;
+  width: 128px;
+  width: 98px;
+  height: 30px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+
+  font-size: 14px;
+  font-family: "Raleway";
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $lt-green;
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 22px;
+  margin: 0;
+  span {
+    font-style: italic;
+    font-weight: 400;
+  }
+}
+
+.lost {
+  color: $red;
+  font-weight: 800;
 }

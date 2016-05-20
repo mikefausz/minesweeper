@@ -1,21 +1,17 @@
 <div class="container">
-  <h1>Minesweeper</h1>
-  <ul id="minefield">
-    <ul ng-repeat="row in minefield.rows">
-      <li ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)">
-        <!-- <img ng-src="{{ getImg(spot) }}" alt="" /> -->
-        <div ng-class="getClass(spot)">
-          <!-- <span ng-if="spot.content != 'empty' && spot.content != 'mine'">{{ spot.content }}</span> -->
-        </div>
-      </li>
-    </ul>
+  <h1>MINE<span>SWEEPER<span></h1>
+
+  <ul ng-repeat="column in minefield.columns"class="col" >
+    <li ng-repeat="spot in column.spots" ng-class="getClass(spot)" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)" ng-bind-html="getContent(spot)"></li>
   </ul>
-  <ul>
-    <li><button type="button" name="beginner" ng-click="newGame(9, 9, 10)">Beginner</button></li>
-    <li><button type="button" name="intermediate" ng-click="newGame(16, 16, 40)">Intermediate</button></li>
-    <li><button type="button" name="expert" ng-click="newGame(16, 30, 99)">Expert</button></li>
+
+  <ul class="difficulty">
+    <li><button type="button" name="easy" ng-click="newGame(9, 9, 10)">Easy</button></li>
+    <li><button type="button" name="medium" ng-click="newGame(16, 16, 40)">Medium</button></li>
+    <li><button type="button" name="hard" ng-click="newGame(16, 30, 99)">Hard</button></li>
   </ul>
-  <h2>Mines left: {{ mines }}</h2>
-  <h2 ng-if="isWinMessageVisible">You won!</h2>
-  <h2 ng-if="isLostMessageVisible">You lost!</h2>
+
+  <h2 ng-if="!isWinMessageVisible">Mines left:<span ng-class="{ 'lost': isLostMessageVisible}" > {{ mines }}</span></h2>
+
+  <h2 ng-if="isWinMessageVisible">You won</h2>
 </div>

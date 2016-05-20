@@ -12,25 +12,25 @@ angular
     var gameOver = false;
 
     // return spot at given coordinates
-    function getSpot(minefield, row, column) {
-      return minefield.rows[row].spots[column];
+    function getSpot(minefield, column, row) {
+      return minefield.columns[column].spots[row];
     }
 
     // place mine at a random empty spot
     function placeRandomMine(minefield) {
       var minePlaced = false;
       do {
-        var row = Math.round(Math.random() * ($scope.height - 1));
         var column = Math.round(Math.random() * ($scope.width - 1));
-        var spot = getSpot(minefield, row, column);
+        var row = Math.round(Math.random() * ($scope.height - 1));
+        var spot = getSpot(minefield, column, row);
         if (spot.content != "mine") {
           spot.content = "mine";
           mineLocations.push(spot);
           minePlaced = true;
-          console.log("MINE placed at [ " + row + ", " + column + "]");
+          console.log("MINE placed at [ " + column + ", " + row + "]");
         }
         else {
-          console.log("MINE already at [ " + row + ", " + column + "] Placing another");
+          console.log("MINE already at [ " + column + ", " + row + "] Placing another");
         }
       } while (!minePlaced);
     }
@@ -43,70 +43,70 @@ angular
     }
 
     // returns an array of all adjacent spots on minefield
-    function getAdjacentSpots(minefield, row, column) {
-      var thisSpot = getSpot(minefield, row, column);
+    function getAdjacentSpots(minefield, column, row) {
+      var thisSpot = getSpot(minefield, column, row);
       var adjacentSpots = [];
 
       // IF this is not the first row
-      if(row > 0) {
+      if(column > 0) {
         // IF this is not the first column
-        if(column > 0) {
+        if(row > 0) {
             // get the spot ABOVE LEFT
-            adjacentSpots.push(getSpot(minefield, row - 1, column - 1));
+            adjacentSpots.push(getSpot(minefield, column - 1, row - 1));
         }
 
         // get the spot ABOVE
-        adjacentSpots.push(getSpot(minefield, row - 1, column));
+        adjacentSpots.push(getSpot(minefield, column - 1, row));
 
         // IF this is not the last column
-        if(column < $scope.width - 1) {
+        if(row < $scope.height - 1) {
             // get the spot ABOVE RIGHT
-            adjacentSpots.push(getSpot(minefield, row - 1, column + 1));
+            adjacentSpots.push(getSpot(minefield, column - 1, row + 1));
         }
       }
 
       // IF this is not the first column
-      if(column > 0) {
+      if(row > 0) {
         // get the spot to the LEFT
-        adjacentSpots.push(getSpot(minefield, row, column - 1));
+        adjacentSpots.push(getSpot(minefield, column, row - 1));
       }
 
       // IF this is not the last column
-      if(column < $scope.width - 1) {
+      if(row < $scope.height - 1) {
         // get the spot to the RIGHT
-        adjacentSpots.push(getSpot(minefield, row, column + 1));
+        adjacentSpots.push(getSpot(minefield, column, row + 1));
       }
 
       // IF this is not the last row
-      if(row < $scope.height - 1) {
+      if(column < $scope.width - 1) {
         // IF this is not the first column
-        if(column > 0) {
+        if(row> 0) {
             // get the spot BELOW LEFT
-            adjacentSpots.push(getSpot(minefield, row + 1, column - 1));
+            adjacentSpots.push(getSpot(minefield, column + 1, row - 1));
         }
 
         // get the spot BELOW
-        adjacentSpots.push(getSpot(minefield, row + 1, column));
+        adjacentSpots.push(getSpot(minefield, column + 1, row));
 
         // IF this is not the last column
-        if(column < $scope.width - 1) {
+        if(row < $scope.height - 1) {
             // get the spot BELOW RIGHT
-            adjacentSpots.push(getSpot(minefield, row + 1, column + 1));
+            adjacentSpots.push(getSpot(minefield, column + 1, row + 1));
         }
       }
       return adjacentSpots;
     }
 
     // counts number of mines adjacent to given spot
-    function calculateNumber(minefield, row, column) {
-      var thisSpot = getSpot(minefield, row, column);
+    function calculateNumber(minefield, column, row) {
+      var thisSpot = getSpot(minefield, column, row);
       var adjacentMines = 0;
       // if this spot contains a mine then exit
       if(thisSpot.content == "mine") {
         return;
       }
       else {
-        var adjacentSpots = getAdjacentSpots(minefield, row, column);
+        var adjacentSpots = getAdjacentSpots(minefield, column, row);
         angular.forEach(adjacentSpots, function(spot) {
           if(spot.content == "mine") {
             adjacentMines++;
@@ -120,9 +120,9 @@ angular
 
     // calculate adjacent mines for every spot on board
     function calculateAllNumbers(minefield) {
-      for(var row = 0; row < $scope.height; row++) {
-        for(var column = 0; column < $scope.width; column++) {
-          calculateNumber(minefield, row, column);
+      for(var column = 0; column < $scope.width; column++) {
+        for(var row = 0; row < $scope.height; row++) {
+          calculateNumber(minefield, column, row);
         }
       }
     }
@@ -130,24 +130,24 @@ angular
     // instantiate minefield, add mines and numbers
     function createMinefield() {
       var minefield = {};
-      minefield.rows = [];
+      minefield.columns = [];
 
-      for(var i = 0; i < $scope.height; i++) {
-        var row = {};
-        row.spots = [];
+      for(var i = 0; i < $scope.width; i++) {
+        var column = {};
+        column.spots = [];
 
-        for(var j = 0; j < $scope.width; j++) {
+        for(var j = 0; j < $scope.height; j++) {
             var spot = {};
-            spot.row = i;
-            spot.column = j;
+            spot.column = i;
+            spot.row = j;
             spot.isCovered = true;
             spot.mineWrong = false;
             spot.flagState = "unflagged";
             spot.content = "empty";
-            row.spots.push(spot);
+            column.spots.push(spot);
         }
 
-        minefield.rows.push(row);
+        minefield.columns.push(column);
       }
 
       placeNMines(minefield);
@@ -168,45 +168,30 @@ angular
       return true;
     }
 
-    // return spot image based on state
-    $scope.getImg = function(spot) {
+    $scope.getContent = function(spot) {
       if(spot.isCovered) {
         switch (spot.flagState) {
           case "flagged":
-            return (gameOver && spot.content != "mine") ? "minesweeper/images/flag-mine-wrong.png" : "minesweeper/images/flag-mine.png";
+            return (gameOver && spot.content != "mine") ? "<i class='fa fa-flag' aria-hidden='true'></i>" : "<i class='fa fa-flag' aria-hidden='true'></i>";
           case "suspect":
-            return "minesweeper/images/flag-suspect.png";
+            return "<i class='fa fa-question' aria-hidden='true'></i>";
           default:
-            return "minesweeper/images/covered.png";
+            return "";
         }
       }
       else {
         switch (spot.content) {
           case "mine":
             if(spot.flagState === "flagged") {
-              return "minesweeper/images/flag-mine.png";
+              return "<i class='fa fa-flag' aria-hidden='true'></i>";
             }
             else {
-              return spot.mineWrong ? "minesweeper/images/mine-wrong.png" : "minesweeper/images/mine.png";
+              return spot.mineWrong ? "<i class='fa fa-bomb' aria-hidden='true'></i>" : "<i class='fa fa-bomb' aria-hidden='true'></i>";
             }
-          case 1:
-            return "minesweeper/images/number-1.png";
-          case 2:
-            return "minesweeper/images/number-2.png";
-          case 3:
-            return "minesweeper/images/number-3.png";
-          case 4:
-            return "minesweeper/images/number-4.png";
-          case 5:
-            return "minesweeper/images/number-5.png";
-          case 6:
-            return "minesweeper/images/number-6.png";
-          case 7:
-            return "minesweeper/images/number-7.png";
-          case 8:
-            return "minesweeper/images/number-8.png";
+          case "empty":
+            return "";
           default:
-            return "minesweeper/images/empty.png";
+            return spot.content;
         }
       }
     };
@@ -216,40 +201,40 @@ angular
       if(spot.isCovered) {
         switch (spot.flagState) {
           case "flagged":
-            return (gameOver && spot.content != "mine") ? "minesweeper/images/flag-mine-wrong.png" : "minesweeper/images/flag-mine.png";
+            return (gameOver && spot.content != "mine") ? "spot flag-wrong" : "spot flag";
           case "suspect":
-            return "minesweeper/images/flag-suspect.png";
+            return "spot suspect";
           default:
-            return "covered";
+            return "spot covered";
         }
       }
       else {
         switch (spot.content) {
           case "mine":
             if(spot.flagState === "flagged") {
-              return "minesweeper/images/flag-mine.png";
+              return "spot flag";
             }
             else {
-              return spot.mineWrong ? "minesweeper/images/mine-wrong.png" : "minesweeper/images/mine.png";
+              return spot.mineWrong ? "spot mine-wrong" : "spot mine";
             }
           case 1:
-            return "number";
+            return "spot number";
           case 2:
-            return "number";
+            return "spot number";
           case 3:
-            return "number";
+            return "spot number";
           case 4:
-            return "number";
+            return "spot number";
           case 5:
-            return "number";
+            return "spot number";
           case 6:
-            return "number";
+            return "spot number";
           case 7:
-            return "number";
+            return "spot number";
           case 8:
-            return "number";
+            return "spot number";
           default:
-            return "empty";
+            return "spot empty";
         }
       }
     };
@@ -264,7 +249,7 @@ angular
       // IF empty spot clicked, uncover all adjacent, repeat
       if (spot.content === "empty" && spot.isCovered === true){
         spot.isCovered = false;
-        var adjacentSpots = getAdjacentSpots(minefield, spot.row, spot.column);
+        var adjacentSpots = getAdjacentSpots(minefield, spot.column, spot.row);
         angular.forEach(adjacentSpots, function(spot) {
           uncoverSpots(spot);
         });
@@ -279,10 +264,10 @@ angular
           spot.isCovered = false;
           spot.mineWrong = true;
           angular.forEach(mineLocations, function(mine) {
-            getSpot($scope.minefield, mine.row, mine.column).isCovered = false;
+            getSpot($scope.minefield, mine.column, mine.row).isCovered = false;
           });
-          $scope.isLostMessageVisible = true;
           gameOver = true;
+          $scope.isLostMessageVisible = true;
         }
         else {
           uncoverSpots(spot);
@@ -296,6 +281,7 @@ angular
 
     // toggle spot between flag states, update mines left count
     $scope.flagSpot = function(spot) {
+      if (spot.isCovered && !gameOver) {
       switch (spot.flagState) {
         case "unflagged":
           spot.flagState = "flagged";
@@ -311,6 +297,7 @@ angular
         default:
           console.log("FLAG STATE ERROR");
       }
+    }
     };
 
     // reset defaults, re-instantiate minefield with given options
