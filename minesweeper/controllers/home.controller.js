@@ -2,6 +2,7 @@ angular
   .module('minesweeper')
   .controller('HomeController', function($scope) {
     // default game options
+    $scope.difficulty = "EASY";
     $scope.height = 9;
     $scope.width = 9;
     $scope.mines = 10;
@@ -301,15 +302,32 @@ angular
     };
 
     // reset defaults, re-instantiate minefield with given options
-    $scope.newGame = function(height, width, mines) {
-      $scope.height = height;
-      $scope.width = width;
-      $scope.mines = mines;
-      mineLocations = [];
+    $scope.newGame = function(difficulty) {
+      switch (difficulty) {
+        case "MEDIUM":
+          $scope.difficulty = "MEDIUM";
+          $scope.height = 16;
+          $scope.width = 16;
+          $scope.mines = 40;
+          break;
+        case "HARD":
+          $scope.difficulty = "HARD";
+          $scope.height = 16;
+          $scope.width = 30;
+          $scope.mines = 99;
+          break;
+        default:
+          $scope.difficulty = "EASY";
+          $scope.height = 9;
+          $scope.width = 9;
+          $scope.mines = 10;
+          break;  
+      }
 
+      mineLocations = [];
+      gameOver = false;
       $scope.isWinMessageVisible = false;
       $scope.isLostMessageVisible = false;
-      gameOver = false;
 
       $scope.minefield = createMinefield();
       window.minefield = $scope.minefield;

@@ -28,17 +28,33 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+
+  background-image: url("https://c1.staticflickr.com/7/6183/6132449424_386eee552f_b.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 ul {
   padding: 0;
+  list-style-type: none;
 }
 
 .container {
   height: 100%;
+  margin: 0 auto;
   text-align: center;
-  background-image: url("https://c1.staticflickr.com/7/6183/6132449424_386eee552f_b.jpg");
-  background-size: cover;
+}
+
+.easy {
+  width: 350px;
+}
+
+.medium {
+  width: 550px;
+}
+
+.hard {
+  width: 1024px;
 }
 
 h1 {
@@ -152,7 +168,6 @@ h1 {
 }
 
 .difficulty {
-  list-style: none;
   margin: 10px;
 }
 
@@ -192,4 +207,20 @@ h2 {
 .lost {
   color: $red;
   font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  // switch columns for rows to fit smaller screens
+  .hard {
+    width: 550px;
+  }
+  .hard .col {
+    display: block;
+    margin: 0;
+    height: 34px;
+  }
+  .hard .col li {
+    float: left;
+    margin: 2px;
+  }
 }

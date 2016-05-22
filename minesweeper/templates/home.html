@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-class="{ 'easy': difficulty==='EASY', 'medium': difficulty==='MEDIUM', 'hard': difficulty==='HARD'}">
   <h1>MINE<span>SWEEPER<span></h1>
 
   <ul ng-repeat="column in minefield.columns"class="col" >
@@ -6,9 +6,9 @@
   </ul>
 
   <ul class="difficulty">
-    <li><button type="button" name="easy" ng-click="newGame(9, 9, 10)">Easy</button></li>
-    <li><button type="button" name="medium" ng-click="newGame(16, 16, 40)">Medium</button></li>
-    <li><button type="button" name="hard" ng-click="newGame(16, 30, 99)">Hard</button></li>
+    <li><button type="button" name="easy" ng-click="newGame('EASY')">Easy</button></li>
+    <li><button type="button" name="medium" ng-click="newGame('MEDIUM')">Medium</button></li>
+    <li><button type="button" name="hard" ng-click="newGame('HARD')">Hard</button></li>
   </ul>
 
   <h2 ng-if="!isWinMessageVisible">Mines left:<span ng-class="{ 'lost': isLostMessageVisible}" > {{ mines }}</span></h2>

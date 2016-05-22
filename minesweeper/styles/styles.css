@@ -6,16 +6,28 @@ body {
   box-sizing: border-box;
   height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-image: url("https://c1.staticflickr.com/7/6183/6132449424_386eee552f_b.jpg");
+  background-size: cover;
+  background-attachment: fixed; }
 
 ul {
-  padding: 0; }
+  padding: 0;
+  list-style-type: none; }
 
 .container {
   height: 100%;
-  text-align: center;
-  background-image: url("https://c1.staticflickr.com/7/6183/6132449424_386eee552f_b.jpg");
-  background-size: cover; }
+  margin: 0 auto;
+  text-align: center; }
+
+.easy {
+  width: 350px; }
+
+.medium {
+  width: 550px; }
+
+.hard {
+  width: 1024px; }
 
 h1 {
   margin: 0;
@@ -120,7 +132,6 @@ h1 {
     font-size: 16px; }
 
 .difficulty {
-  list-style: none;
   margin: 10px; }
 
 .difficulty li {
@@ -155,3 +166,14 @@ h2 {
 .lost {
   color: #b01f1f;
   font-weight: 800; }
+
+@media (max-width: 600px) {
+  .hard {
+    width: 550px; }
+  .hard .col {
+    display: block;
+    margin: 0;
+    height: 34px; }
+  .hard .col li {
+    float: left;
+    margin: 2px; } }
