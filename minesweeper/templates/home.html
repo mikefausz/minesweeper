@@ -1,17 +1,25 @@
-<div class="container" ng-class="{ 'easy': difficulty==='EASY', 'medium': difficulty==='MEDIUM', 'hard': difficulty==='HARD'}">
-  <h1>MINE<span>SWEEPER<span></h1>
+<div class="container" ng-class="{ 'cont-easy': difficulty==='EASY', 'cont-medium': difficulty==='MEDIUM', 'cont-hard': difficulty==='HARD'}">
+  <section>
+    <h1>MINE<span>SWEEPER<span></h1>
+  </section>
 
-  <ul ng-repeat="column in minefield.columns"class="col" >
-    <li ng-repeat="spot in column.spots" ng-class="getClass(spot)" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)" ng-bind-html="getContent(spot)"></li>
-  </ul>
+  <section>
+    <ul ng-repeat="column in minefield.columns"class="col" >
+      <li ng-repeat="spot in column.spots" ng-class="getClass(spot)" ng-click="uncoverSpot(spot)" ng-right-click="flagSpot(spot)" ng-bind-html="getContent(spot)"></li>
+    </ul>
+  </section>
 
-  <ul class="difficulty">
-    <li><button type="button" name="easy" ng-click="newGame('EASY')">Easy</button></li>
-    <li><button type="button" name="medium" ng-click="newGame('MEDIUM')">Medium</button></li>
-    <li><button type="button" name="hard" ng-click="newGame('HARD')">Hard</button></li>
-  </ul>
+  <section>
+    <ul class="difficulty">
+      <li><button type="button" name="easy" ng-click="newGame('EASY')">Easy</button></li>
+      <li><button type="button" name="medium" ng-click="newGame('MEDIUM')">Medium</button></li>
+      <li><button type="button" name="hard" ng-click="newGame('HARD')">Hard</button></li>
+    </ul>
+  </section>
 
-  <h2 ng-if="!isWinMessageVisible">Mines left:<span ng-class="{ 'lost': isLostMessageVisible}" > {{ mines }}</span></h2>
+  <section>
+    <h2 ng-if="!isWinMessageVisible" ng-class="{'text-easy': difficulty==='EASY'}">Mines left:<span ng-class="{ 'lost': isLostMessageVisible}" > {{ mines }}</span></h2>
 
-  <h2 ng-if="isWinMessageVisible">You won</h2>
+    <h2 ng-if="isWinMessageVisible" ng-class="{'text-easy': difficulty==='EASY'}">You won</h2>
+  </section>
 </div>
